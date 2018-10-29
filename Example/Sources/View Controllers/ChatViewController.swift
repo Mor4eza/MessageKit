@@ -150,12 +150,12 @@ class ChatViewController: MessagesViewController, MessagesDataSource {
         return messageList[indexPath.section]
     }
     
-    func cellTopLabelAttributedText(for message: MessageType, at indexPath: IndexPath) -> NSAttributedString? {
-        if indexPath.section % 3 == 0 {
-            return NSAttributedString(string: MessageKitDateFormatter.shared.string(from: message.sentDate), attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 10), NSAttributedString.Key.foregroundColor: UIColor.darkGray])
-        }
-        return nil
-    }
+//    func cellTopLabelAttributedText(for message: MessageType, at indexPath: IndexPath) -> NSAttributedString? {
+//        if indexPath.section % 3 == 0 {
+//            return NSAttributedString(string: MessageKitDateFormatter.shared.string(from: message.sentDate), attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 10), NSAttributedString.Key.foregroundColor: UIColor.darkGray])
+//        }
+//        return nil
+//    }
     
     func messageTopLabelAttributedText(for message: MessageType, at indexPath: IndexPath) -> NSAttributedString? {
         let name = message.sender.displayName
@@ -164,7 +164,7 @@ class ChatViewController: MessagesViewController, MessagesDataSource {
     
     func messageBottomLabelAttributedText(for message: MessageType, at indexPath: IndexPath) -> NSAttributedString? {
         
-        let dateString = formatter.string(from: message.sentDate)
+        let dateString = "الان"
         return NSAttributedString(string: dateString, attributes: [NSAttributedString.Key.font: UIFont.preferredFont(forTextStyle: .caption2)])
     }
     
@@ -235,10 +235,10 @@ extension ChatViewController: MessageInputBarDelegate {
         for component in inputBar.inputTextView.components {
             
             if let str = component as? String {
-                let message = MockMessage(text: str, sender: currentSender(), messageId: UUID().uuidString, date: Date())
+                let message = MockMessage(text: str, sender: currentSender(), messageId: UUID().uuidString, date: "الان",isRead: true)
                 insertMessage(message)
             } else if let img = component as? UIImage {
-                let message = MockMessage(image: img, sender: currentSender(), messageId: UUID().uuidString, date: Date())
+                let message = MockMessage(image: img, sender: currentSender(), messageId: UUID().uuidString, date: "الان",isRead: true)
                 insertMessage(message)
             }
             

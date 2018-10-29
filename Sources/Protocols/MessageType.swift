@@ -35,9 +35,9 @@ public protocol MessageType {
     var messageId: String { get }
 
     /// The date the message was sent.
-    var sentDate: Date { get }
+    var sentDate: String { get }
 
     /// The kind of message and its underlying kind.
     var kind: MessageKind { get }
-
+    var isRead: Bool { get }
 }

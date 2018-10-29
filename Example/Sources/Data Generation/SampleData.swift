@@ -128,30 +128,30 @@ final internal class SampleData {
         let randomSentance = Lorem.sentence()
         let uniqueID = NSUUID().uuidString
         let sender = allowedSenders[randomNumberSender]
-        let date = dateAddingRandomTime()
+        let date = "الان"
 
         switch messageTypes[randomMessageType] {
         case "Text":
-            return MockMessage(text: randomSentance, sender: sender, messageId: uniqueID, date: date)
+            return MockMessage(text: randomSentance, sender: sender, messageId: uniqueID, date: date, isRead: true)
         case "AttributedText":
             let attributedText = attributedString(with: randomSentance)
-            return MockMessage(attributedText: attributedText, sender: senders[randomNumberSender], messageId: uniqueID, date: date)
+            return MockMessage(attributedText: attributedText, sender: senders[randomNumberSender], messageId: uniqueID, date: date,isRead: true)
         case "Photo":
             let image = messageImages[randomNumberImage]
-            return MockMessage(image: image, sender: sender, messageId: uniqueID, date: date)
+            return MockMessage(image: image, sender: sender, messageId: uniqueID, date: date,isRead: true)
         case "Video":
             let image = messageImages[randomNumberImage]
-            return MockMessage(thumbnail: image, sender: sender, messageId: uniqueID, date: date)
+            return MockMessage(thumbnail: image, sender: sender, messageId: uniqueID, date: date,isRead: true)
         case "Emoji":
-            return MockMessage(emoji: emojis[randomNumberEmoji], sender: sender, messageId: uniqueID, date: date)
+            return MockMessage(emoji: emojis[randomNumberEmoji], sender: sender, messageId: uniqueID, date: date, isRead: true)
         case "Location":
-            return MockMessage(location: locations[randomNumberLocation], sender: sender, messageId: uniqueID, date: date)
+            return MockMessage(location: locations[randomNumberLocation], sender: sender, messageId: uniqueID, date: date, isRead: true)
         case "URL":
-            return MockMessage(text: "https://github.com/MessageKit", sender: sender, messageId: uniqueID, date: date)
+            return MockMessage(text: "https://github.com/MessageKit", sender: sender, messageId: uniqueID, date: date, isRead: true)
         case "Phone":
-            return MockMessage(text: "123-456-7890", sender: sender, messageId: uniqueID, date: date)
+            return MockMessage(text: "123-456-7890", sender: sender, messageId: uniqueID, date: date, isRead: true)
         case "Custom":
-            return MockMessage(custom: "Someone left the conversation", sender: system, messageId: uniqueID, date: date)
+            return MockMessage(custom: "Someone left the conversation", sender: system, messageId: uniqueID, date: date, isRead: true)
         default:
             fatalError("Unrecognized mock message type")
         }

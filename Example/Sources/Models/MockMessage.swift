@@ -57,45 +57,46 @@ internal struct MockMessage: MessageType {
 
     var messageId: String
     var sender: Sender
-    var sentDate: Date
+    var sentDate: String
     var kind: MessageKind
-
-    private init(kind: MessageKind, sender: Sender, messageId: String, date: Date) {
+    var isRead: Bool
+    private init(kind: MessageKind, sender: Sender, messageId: String, date: String, isRead: Bool) {
         self.kind = kind
         self.sender = sender
         self.messageId = messageId
         self.sentDate = date
+        self.isRead = isRead
     }
     
-    init(custom: Any?, sender: Sender, messageId: String, date: Date) {
-        self.init(kind: .custom(custom), sender: sender, messageId: messageId, date: date)
+    init(custom: Any?, sender: Sender, messageId: String, date: String, isRead: Bool) {
+        self.init(kind: .custom(custom), sender: sender, messageId: messageId, date: date, isRead: isRead)
     }
 
-    init(text: String, sender: Sender, messageId: String, date: Date) {
-        self.init(kind: .text(text), sender: sender, messageId: messageId, date: date)
+    init(text: String, sender: Sender, messageId: String, date: String, isRead: Bool) {
+        self.init(kind: .text(text), sender: sender, messageId: messageId, date: date, isRead: isRead)
     }
 
-    init(attributedText: NSAttributedString, sender: Sender, messageId: String, date: Date) {
-        self.init(kind: .attributedText(attributedText), sender: sender, messageId: messageId, date: date)
+    init(attributedText: NSAttributedString, sender: Sender, messageId: String, date: String, isRead: Bool) {
+        self.init(kind: .attributedText(attributedText), sender: sender, messageId: messageId, date: date, isRead: isRead)
     }
 
-    init(image: UIImage, sender: Sender, messageId: String, date: Date) {
+    init(image: UIImage, sender: Sender, messageId: String, date: String, isRead: Bool) {
         let mediaItem = ImageMediaItem(image: image)
-        self.init(kind: .photo(mediaItem), sender: sender, messageId: messageId, date: date)
+        self.init(kind: .photo(mediaItem), sender: sender, messageId: messageId, date: date, isRead: isRead)
     }
 
-    init(thumbnail: UIImage, sender: Sender, messageId: String, date: Date) {
+    init(thumbnail: UIImage, sender: Sender, messageId: String, date: String, isRead: Bool) {
         let mediaItem = ImageMediaItem(image: thumbnail)
-        self.init(kind: .video(mediaItem), sender: sender, messageId: messageId, date: date)
+        self.init(kind: .video(mediaItem), sender: sender, messageId: messageId, date: date, isRead: isRead)
     }
 
-    init(location: CLLocation, sender: Sender, messageId: String, date: Date) {
+    init(location: CLLocation, sender: Sender, messageId: String, date: String, isRead: Bool) {
         let locationItem = CoordinateItem(location: location)
-        self.init(kind: .location(locationItem), sender: sender, messageId: messageId, date: date)
+        self.init(kind: .location(locationItem), sender: sender, messageId: messageId, date: date, isRead: isRead)
     }
 
-    init(emoji: String, sender: Sender, messageId: String, date: Date) {
-        self.init(kind: .emoji(emoji), sender: sender, messageId: messageId, date: date)
+    init(emoji: String, sender: Sender, messageId: String, date: String, isRead: Bool) {
+        self.init(kind: .emoji(emoji), sender: sender, messageId: messageId, date: date, isRead: isRead)
     }
 
 }
